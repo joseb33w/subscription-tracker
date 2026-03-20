@@ -21,7 +21,14 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { -webkit-font-smoothing: antialiased; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--navy-900);
+  color: var(--text);
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -314,28 +321,58 @@ body { -webkit-font-smoothing: antialiased; }
 
 .edit-form {
   overflow: hidden; animation: slideDown 0.35s ease both;
+  border-top: 1px solid var(--border);
+  margin-top: 14px; padding-top: 14px;
 }
 
 .chart-card {
   background: var(--card-bg);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
 }
+.chart-title {
+  font-weight: 700; font-size: 1rem;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.chart-title i { color: var(--accent-light); font-size: 0.9rem; }
 
 .payment-item {
   display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px;
+  padding: 12px 16px;
   background: rgba(255,255,255,0.02);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  transition: background 0.2s;
+  animation: fadeUp 0.35s ease both;
 }
-.payment-item:hover { background: rgba(99,102,241,0.04); }
 .payment-icon {
   width: 36px; height: 36px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   font-size: 0.85rem; flex-shrink: 0;
+}
+.payment-name {
+  font-weight: 600; font-size: 0.92rem;
+}
+.payment-date {
+  font-size: 0.72rem; color: var(--text-dim);
+}
+.payment-amount {
+  font-weight: 700; font-size: 1rem;
+  margin-left: auto;
+}
+
+.empty-state {
+  text-align: center; padding: 40px 20px;
+  color: var(--text-muted);
+}
+.empty-state i {
+  font-size: 2.5rem; margin-bottom: 12px;
+  display: block; opacity: 0.4;
+}
+.empty-state p {
+  font-size: 0.9rem; line-height: 1.5;
 }
 
 .modal-overlay {
@@ -347,27 +384,68 @@ body { -webkit-font-smoothing: antialiased; }
   animation: fadeIn 0.25s ease;
 }
 .modal-card {
-  background: var(--navy-700);
+  background: var(--navy-800);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px 24px; max-width: 380px;
-  width: 100%; text-align: center;
-  animation: popIn 0.3s ease;
+  padding: 28px 24px; width: 100%;
+  max-width: 420px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: popIn 0.35s ease;
+}
+.modal-title {
+  font-weight: 800; font-size: 1.2rem;
+  margin-bottom: 16px;
 }
 
-.empty-state {
-  text-align: center; padding: 40px 20px;
-  color: var(--text-muted);
+/* Dashboard layout helpers */
+.dash-header {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 8px;
+  max-width: 600px; margin: 0 auto; width: 100%;
 }
-.empty-icon {
-  font-size: 2.8rem; margin-bottom: 12px;
-  opacity: 0.4;
+.dash-title {
+  font-size: 1.3rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-light), #c084fc);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.dash-subtitle {
+  font-size: 0.78rem; color: var(--text-dim);
+}
+.dash-body {
+  max-width: 600px; margin: 0 auto;
+  padding: 0 16px 40px; width: 100%;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px; margin-bottom: 18px;
+}
+.subs-list {
+  display: flex; flex-direction: column;
+  gap: 12px;
+}
+.payments-list {
+  display: flex; flex-direction: column;
+  gap: 10px;
+}
+.charts-grid {
+  display: flex; flex-direction: column;
+  gap: 16px;
 }
 
-.app-header {
-  background: rgba(11,15,26,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  position: sticky; top: 0; z-index: 50;
+/* Sign out button */
+.signout-btn {
+  background: none; border: none;
+  color: var(--text-muted); cursor: pointer;
+  font-size: 0.85rem; padding: 6px;
+  transition: color 0.2s;
+}
+.signout-btn:hover { color: var(--rose); }
+
+/* Responsive tweaks */
+@media (max-width: 380px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-value { font-size: 1.3rem; }
+  .auth-card { padding: 24px 18px; }
 }
