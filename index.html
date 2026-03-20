@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Subscription Tracker</title>
-  <script type="module" crossorigin src="./assets/index-lswz72Az.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Cn5GhtOM.css">
+  <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
+  <script crossorigin="anonymous">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0b0f1a', 800: '#111827', 700: '#1a2035', 600: '#232b3e' },
+            accent: '#6366f1',
+            'accent-light': '#818cf8',
+            'accent-glow': 'rgba(99,102,241,0.25)',
+            mint: '#34d399',
+            rose: '#f43f5e',
+            amber: '#fbbf24'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div id="root"></div>
+<body class="bg-navy-900 text-white min-h-screen font-sans">
+  <div id="app"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" crossorigin="anonymous"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
